@@ -1,16 +1,19 @@
-import { ApolloServer } from 'apollo-server-express';
-import {expressMiddleware} from '@apollo/server/express4'
-import typeDefs from './utils/TypeDefs';
-import resolvers from './utils/resolvers';
+const {ApolloServer}=require('@apollo/server')
+const {expressMiddleware} = require('@apollo/server/express4')
+const typeDefs = require('./utils/TypeDefs')
+const resolvers= require('./utils/resolvers')
+const express = require('express');
+const app = express();
+
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  
 })
-const express = require('express');
 const path = require('path');
 const db = require('./config/connection');
 const routes = require('./routes');
-const app = express();
+
 const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));

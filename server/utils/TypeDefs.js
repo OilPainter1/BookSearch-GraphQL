@@ -1,9 +1,12 @@
-import { ApolloServer } from "@apollo/server";
+
+
+const {ApolloServer} = require('@apollo/server')
+
 
 const typeDefs = `
 type bookSchema {
     _id: ID
-    authors: [{String}]
+  
     description: String!
     bookId: String!
     image: String
@@ -20,6 +23,9 @@ type User {
 type Query {
     getUser: User
 }
+type Mutation {
+    createUser(username:String!,email:String!,password:String!):User
+}
 
 `
-export default typeDefs
+module.exports= typeDefs
